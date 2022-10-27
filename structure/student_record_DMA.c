@@ -53,7 +53,7 @@ void read(int n,STD *s){
     for(int i=0;i<n;i++){
     	printf("\t----Student[%d]----\n",i+1);
     	printf("Name >> ");
-        scanf("%s",((s+i)->name));
+        scanf("%s",&((s+i)->name));
         printf("Roll number >> ");
         scanf("%d",&((s+i)->roll_no));
         printf("Test-1 Marks >> ");
