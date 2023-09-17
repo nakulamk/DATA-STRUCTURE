@@ -129,11 +129,37 @@ class BST:
   #DELETION 
   # CONDITION 1 CHECK TREE IS EMPTY OR NOT
   # IF THER FIND AND DELETE
-  def Delete(self,data):
+  def DeleteNode(self,data):
     if self is None:
       print("tree is empty\n")
       return
+    # If the node to be deleted is the root and has children
+    if self.key==data and (self.lchild!=None or self.rchild!=None):
+      print("Root node can't be deleted unless it has no child.\n")
+      return
+    # CASE 1: If the node to be deleted is the root and has no children.
+    if self.key ==data and self.lchild==None and self.rchild==None:
+      print(f"Deleted root node with data= {self.key}")
+      del self
+      self=None
+      return
     
+
+    # SEARCH NODE
+    parentNode=None
+    nodeToBeDeleted=self.SearchNode(data,parentNode)
+    if (nodeToBeDeleted==None):
+      print("node with data does not exist")
+      return
+    else:
+      print("data deleted")
+    
+    # CASE 2: If the node to be deleted is a leaf node.
+    if nodeToBeDeleted.lchild==None and  nodeToBeDeleted.rchild==None:
+      if nodeToBeDeleted==parentNode.lchild:
+        parentNode.rchild=None
+      else:
+        parentNode.rchild=None
   
 
 
