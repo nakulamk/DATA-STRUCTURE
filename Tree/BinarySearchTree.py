@@ -252,6 +252,29 @@ class BinarySearchTree:
 
         print("New node inserted")
 
+    def insert(self):
+        data=int(input('Enter the data'))
+        new_node=Node()
+        new_node.data=data
+        new_node.right=None
+        new_node.left=None
+
+        if self.root is None:
+            print("New node inserted as the root")
+            self.root=new_node
+            return
+        if new_node.data<=self.root.data:
+            if self.root.left:
+                self.root.left.insert()
+            else:
+                self.root.left=new_node
+        else:
+            if self.root.right:
+                self.root.right.insert()
+            else:
+                self.root.right=new_node
+
+
     def in_order(self, root):
         if root is None:
             return
@@ -393,7 +416,7 @@ class BinarySearchTree:
 if __name__ == "__main__":
     bst = BinarySearchTree()
     while True:
-        print("\n0.Exit\n1.Insert\n2.Display\n3.Search\n4.Delete\n5.Find height")
+        print("\n0.Exit\n1.Insert\n2.Display\n3.Search\n4.Delete\n5.Find height\n6.insert")
         choice = int(input("Enter your choice: "))
         if choice == 0:
             break
@@ -407,5 +430,7 @@ if __name__ == "__main__":
             bst.delete_node()
         elif choice == 5:
             bst.find_height()
+        elif choice == 6:
+            bst.insert()
         else:
             print("Enter a proper choice")
